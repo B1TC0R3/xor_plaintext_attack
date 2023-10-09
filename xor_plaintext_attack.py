@@ -1,6 +1,5 @@
 # Copyright © 2023 Thomas Gingele https://github.com/B1TC0R3
 import argparse
-import os
 
 
 def get_args() -> argparse.Namespace:
