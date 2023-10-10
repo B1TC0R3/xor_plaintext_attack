@@ -1,5 +1,6 @@
 # Copyright © 2023 Thomas Gingele https://github.com/B1TC0R3
 import argparse
+import base64
 
 
 def get_args() -> argparse.Namespace:
@@ -33,12 +34,14 @@ def xor(cipher, key) -> bytearray:
 
 
 def main():
-    args      = get_args()
-    cipher    = args.cipher.encode('utf-8')
-    plaintext = args.plaintext.encode('utf-8')
-    key       = str(xor(cipher, plaintext), 'utf-8')
+    args       = get_args()
+    cipher     = args.cipher.encode()
+    plaintext  = args.plaintext.encode()
+    key        = str(xor(cipher, plaintext), 'utf-8')
+    b64_cipher = base64.b64encode(cipher).decode()
 
-    print(key)
+    print(f"KEY: {key}")
+    print(f"BASE64 CIPHER: {b64_cipher}")
 
 
 if __name__ == '__main__':
